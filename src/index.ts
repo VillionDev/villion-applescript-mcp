@@ -1,6 +1,10 @@
 import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
-import { openApplication, openApplicationSchema } from "./tools";
+import {
+  getUserBrowser,
+  openApplication,
+  openApplicationSchema,
+} from "./tools";
 
 const server = new McpServer({
   name: "villion-mcp",
@@ -12,6 +16,7 @@ const server = new McpServer({
 });
 
 server.tool("openApplication", openApplicationSchema, openApplication);
+server.tool("getUserDefaultBrowser", getUserBrowser);
 
 async function main() {
   const transport = new StdioServerTransport();
